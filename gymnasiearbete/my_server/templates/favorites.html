@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% block title %} Pricetracker {% endblock %} 
+{% block css %}<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">{% endblock %}
+{% block headline %} Pricetracker {% endblock %} 
+{% block content %}
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div id="productTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        {% for product in products %}
+        <div class="col">
+          <div class="card shadow-sm">
+            
+            <div class="card-body">
+              <img src="{{product['image']}}" alt="Product image" style="width:150px;height:200px;">
+              <p class="card-text">{{ product['name'] }}</p>
+              <p class="card-text">Price: {{ product['price'] }}</p>
+              <p class="card-text">Rating: {{ product['rating'] }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" id="buttonFavorite-{{product["unique_string"]}}" onclick="unFavorite('{{product["unique_string"]}}')" class="btn btn-sm btn-outline-secondary">Unfavorite</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{product['link']}}">Link</a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+</div>
+{% endblock %}

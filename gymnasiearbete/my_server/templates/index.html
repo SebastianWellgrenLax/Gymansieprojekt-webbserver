@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block title %} Pricetracker {% endblock %} 
+{% block css %}<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">{% endblock %}
+{% block headline %} Pricetracker {% endblock %} 
+
+
+{% block content %}
+<p>
+    <div class="form-group">
+      <label for="product_form">Sök efter en produkt</label>
+      <div class="d-flex">
+        <input id="productSearch" type="text" class="form-control" placeholder="Produktnamn" name="product_form"/>
+        <button id="buttonProductSearch" class="btn btn-outline-success" type="submit">Search</button>
+      </div>     
+    </div>
+</p>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div id="productTable" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"></div>
+    </div>
+</div>
+{% endblock %}
